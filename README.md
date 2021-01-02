@@ -35,7 +35,7 @@ The following command both runs all the steps of the conan file, and publishes t
 
 ## Add Remote
 
-    $ conan remote add artifactory https://artifactory01.engit.synamedia.com/artifactory/api/conan/vge-conan-snapshots-local
+    $ conan remote add artifactory <artifactory repo>
 
 ## Upload
 
@@ -45,7 +45,7 @@ The following command both runs all the steps of the conan file, and publishes t
 
 1. find the latest emsdk release at https://github.com/emscripten-core/emsdk/releases
 2. add a new entry to `conandata.yml` with the new version's url and sha256 hash
-3. build & publish to Synamedia's Artifactory as described in the [Build and Package](#build-and-package)
+3. build & publish to artifactory as described in the [Build and Package](#build-and-package)
 4. if all well, commit your changes to the master with commit message of pattern 'v\<version\>' (e.g. v2.0.42)
 
 ## Conan Recipe License
