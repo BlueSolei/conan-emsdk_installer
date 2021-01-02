@@ -6,21 +6,18 @@
 
 Emscripten is an Open Source LLVM to JavaScript compiler
 
-The packages generated with this **conanfile** can be found on [Bintray](https://bintray.com/bincrafters/public-conan/emsdk_installer%3Abincrafters).
-
 ## For Users: Use this package
 
 ### Basic setup
 
-    $ conan install emsdk_installer/1.39.6@bincrafters/testing
+    $ conan install emsdk_installer/2.0.11
 
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
 
     [requires]
-    emsdk_installer/1.39.6@bincrafters/testing
-
+    emsdk_installer/2.0.11
 
 Complete the installation of requirements for your project running:
 
@@ -30,24 +27,26 @@ Note: It is recommended that you run conan install from a build directory and no
 
 ## For Packagers: Publish this Package
 
-The example below shows the commands used to publish to bincrafters conan repository. To publish to your own conan respository (for example, after forking this git repository), you will need to change the commands below accordingly.
-
 ## Build and package
 
 The following command both runs all the steps of the conan file, and publishes the package to the local system cache.  This includes downloading dependencies from "build_requires" and "requires" , and then running the build() method.
 
-    $ conan create bincrafters/testing
-
-
+    $ conan create . emsdk_installer/2.0.11@
 
 ## Add Remote
 
-    $ conan remote add bincrafters "https://api.bintray.com/conan/bincrafters/public-conan"
+    $ conan remote add artifactory https://artifactory01.engit.synamedia.com/artifactory/api/conan/vge-conan-snapshots-local
 
 ## Upload
 
-    $ conan upload emsdk_installer/1.39.6@bincrafters/testing --all -r bincrafters
+    $ conan upload emsdk_installer/2.0.11 --all -r artifactory
 
+## **Update to latest em-sdk version**
+
+1. find the latest emsdk release at https://github.com/emscripten-core/emsdk/releases
+2. add a new entry to `conandata.yml` with the new version's url and sha256 hash
+3. build & publish to Synamedia's Artifactory as described in the [Build and Package](#build-and-package)
+4. if all well, commit your changes to the master with commit message of pattern 'v\<version\>' (e.g. v2.0.42)
 
 ## Conan Recipe License
 
